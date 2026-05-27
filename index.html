@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ryo Kobayashi | Bassist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&family=Space+Mono:ital@0;1&family=Barlow+Condensed:wght@500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #080e0d;
+      --bg2: #0d1514;
+      --bg3: #111a19;
+      --gold: #52c7af;
+      --gold-dim: #2e8a78;
+      --white: #edf5f3;
+      --gray: #7a9e98;
+      --gray-dim: #2e4a46;
+      --border: rgba(82, 199, 175, 0.2);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE TEXTURE ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.35;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 3rem;
+      transition: background 0.4s, backdrop-filter 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(8, 14, 13, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 0 0 3rem;
+      overflow: hidden;
+    }
+    .hero-content {
+      padding-bottom: 6rem;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-photo-wrap {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .hero-photo-wrap::before {
+      content: none;
+    }
+    .hero-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      display: block;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 40%, rgba(82, 199, 175, 0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(82, 199, 175, 0.04) 0%, transparent 70%),
+        linear-gradient(160deg, #0c1110 0%, #080e0d 100%);
+    }
+    .hero-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--border) 30%, var(--border) 70%, transparent);
+      opacity: 0.5;
+    }
+    .hero-strings {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .string {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent 0%, rgba(82,199,175,0.08) 20%, rgba(82,199,175,0.12) 50%, rgba(82,199,175,0.08) 80%, transparent 100%);
+      animation: vibrate 3s ease-in-out infinite;
+    }
+    .string:nth-child(1) { left: 15%; animation-delay: 0s; animation-duration: 3.2s; }
+    .string:nth-child(2) { left: 28%; animation-delay: 0.4s; animation-duration: 2.9s; }
+    .string:nth-child(3) { left: 42%; animation-delay: 0.8s; animation-duration: 3.5s; }
+    .string:nth-child(4) { left: 58%; animation-delay: 1.2s; animation-duration: 2.7s; }
+    @keyframes vibrate {
+      0%, 100% { transform: scaleX(1); opacity: 0.5; }
+      25% { transform: scaleX(2.5) translateX(-1px); opacity: 1; }
+      50% { transform: scaleX(1); opacity: 0.5; }
+      75% { transform: scaleX(2) translateX(1px); opacity: 0.8; }
+    }
+
+    .hero-eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-name {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.6rem, 5.8vw, 5.5rem);
+      font-weight: 800;
+      line-height: 0.88;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-name span {
+      display: block;
+      color: var(--gold);
+    }
+    .hero-sub {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gray);
+      position: relative;
+      z-index: 1;
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 3rem;
+      left: 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--gray);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+    .hero-scroll::after {
+      content: '';
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scroll-line 2s ease-in-out infinite;
+    }
+    @keyframes scroll-line {
+      0% { opacity: 0; transform: scaleY(0); transform-origin: top; }
+      50% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+      100% { opacity: 0; transform: scaleY(1); transform-origin: bottom; }
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 8rem 3rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      max-width: 80px;
+      height: 1px;
+      background: var(--gold-dim);
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--bg2); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+    .about-heading {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .about-heading em {
+      font-style: normal;
+      color: var(--gold);
+    }
+    .about-body {
+      color: #9dbfba;
+      font-size: 0.9rem;
+      line-height: 1.9;
+    }
+    .about-body p + p { margin-top: 1.2rem; }
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-top: 0.4rem;
+    }
+
+    /* ── LIVE ── */
+    #live { background: var(--bg); }
+    /* ── LIVE ACCORDION ── */
+    .live-item { border-bottom: 1px solid var(--border); }
+    .live-item:first-child { border-top: 1px solid var(--border); }
+
+    .live-row {
+      display: grid;
+      grid-template-columns: 110px 1fr 180px 80px 32px;
+      align-items: center;
+      padding: 1.8rem 0;
+      gap: 2rem;
+      transition: background 0.2s;
+      cursor: pointer;
+      user-select: none;
+    }
+    .live-row:hover { background: rgba(82, 199, 175, 0.04); }
+
+    .live-date {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+    }
+    .live-band {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    .live-venue {
+      font-size: 0.8rem;
+      color: var(--gray);
+      letter-spacing: 0.05em;
+    }
+    .live-tag {
+      display: inline-block;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.3em 0.8em;
+      border: 1px solid var(--border);
+      color: var(--gold);
+      justify-self: end;
+    }
+    .live-arrow {
+      justify-self: end;
+      width: 24px;
+      height: 24px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 0.85rem;
+      transition: transform 0.35s ease, border-color 0.25s;
+      flex-shrink: 0;
+    }
+    .live-item.open .live-arrow {
+      transform: rotate(45deg);
+      border-color: var(--gold);
+    }
+
+    /* 詳細パネル */
+    .live-detail {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s ease;
+    }
+    .live-item.open .live-detail {
+      max-height: 260px;
+    }
+    .live-detail-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2.5rem;
+      padding-top: 1.5rem;
+      padding-bottom: 2rem;
+      border-top: 1px solid rgba(82,199,175,0.08);
+      align-items: start;
+    }
+    .live-detail-blocks {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .live-detail-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 0.5rem;
+    }
+    .live-detail-value {
+      font-size: 0.82rem;
+      color: var(--white);
+      line-height: 1.7;
+    }
+    .live-detail-value a {
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+    }
+    .live-detail-value a:hover { border-bottom-color: var(--gold); }
+    .live-detail-flyer {
+      width: 110px;
+      flex-shrink: 0;
+    }
+    .live-detail-flyer img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--border);
+      transition: opacity 0.25s;
+    }
+    .live-detail-flyer img:hover { opacity: 0.85; }
+
+    /* ── BANDS ── */
+    #bands { background: var(--bg2); }
+    .bands-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+    }
+    .band-card {
+      position: relative;
+      background: var(--bg3);
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    .band-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .band-card:hover { background: #131d1c; }
+    .band-card:hover::before { opacity: 1; }
+    .band-card-img {
+      width: 100%;
+      height: 240px;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      background: #0c1716;
+    }
+    .band-card-body {
+      padding: 2rem 2.5rem;
+    }
+    .band-card-body--top {
+      padding-bottom: 1.5rem;
+    }
+    .band-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--gold-dim);
+      letter-spacing: 0.2em;
+      margin-bottom: 1.2rem;
+    }
+    .band-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .band-desc {
+      font-size: 0.8rem;
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+    }
+    .band-links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .band-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      color: var(--gray);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .band-links a svg { width: 18px; height: 18px; fill: currentColor; }
+    .band-links a:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+      background: rgba(82,199,175,0.07);
+    }
+    .band-comment {
+      font-size: 0.75rem;
+      color: var(--gray);
+      font-style: italic;
+      line-height: 1.6;
+      opacity: 0.8;
+    }
+
+    /* ── GEAR ── */
+    #gear { background: var(--bg); position: relative; overflow: hidden; }
+    #gear::before {
+      content: 'GEAR';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(8rem, 20vw, 18rem);
+      font-weight: 300;
+      color: rgba(82, 199, 175, 0.04);
+      pointer-events: none;
+      white-space: nowrap;
+      letter-spacing: 0.1em;
+    }
+    .gear-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3rem;
+      position: relative;
+      z-index: 1;
+    }
+    .gear-category {
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .gear-cat-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .gear-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 0.85rem;
+    }
+    .gear-item-name { color: var(--white); }
+    .gear-item-detail { color: var(--gray); font-size: 0.75rem; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--bg2); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 6rem;
+      align-items: start;
+    }
+    .contact-intro {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.1;
+    }
+    .contact-intro em { font-style: normal; color: var(--gold); }
+    .contact-note {
+      margin-top: 2rem;
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.8;
+    }
+    .contact-links {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.78rem;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+    .contact-link:hover { color: var(--gold); }
+    .contact-link-icon {
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      flex-shrink: 0;
+      transition: border-color 0.25s, color 0.25s;
+    }
+    .contact-link:hover .contact-link-icon { border-color: var(--gold); color: var(--gold); }
+
+    /* ── FORM ── */
+    .form { display: flex; flex-direction: column; gap: 0; }
+    .form-group { position: relative; }
+    .form-group + .form-group { margin-top: 0.2rem; }
+    .form-group label {
+      display: block;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 0.5rem;
+      margin-top: 1.5rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--gray-dim);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 300;
+      padding: 0.75rem 0;
+      outline: none;
+      transition: border-color 0.25s;
+      appearance: none;
+    }
+    .form-group select {
+      cursor: pointer;
+      background: transparent;
+    }
+    .form-group select option {
+      background: #0d1514;
+      color: var(--white);
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-bottom-color: var(--gold);
+    }
+    .form-group textarea { resize: none; min-height: 100px; }
+    .form-submit {
+      margin-top: 2.5rem;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 1.5rem;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 0;
+      transition: color 0.25s;
+    }
+    .form-submit::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      transition: width 0.3s;
+    }
+    .form-submit:hover { color: var(--gold); }
+    .form-submit:hover::before { width: 60px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-logo {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+    }
+    .footer-copy {
+      font-size: 0.7rem;
+      color: var(--gray-dim);
+      letter-spacing: 0.1em;
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1.25rem 1.5rem; }
+      .nav-links { display: none; }
+      section { padding: 5rem 1.5rem; }
+
+      /* Hero: テキスト左下 + 写真を右側に重ねる */
+      .hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        grid-template-columns: unset;
+        height: 100vh;
+        padding: 0 1.5rem 3.5rem;
+        overflow: hidden;
+        position: relative;
+      }
+      .hero-content {
+        padding-bottom: 0;
+        position: relative;
+        z-index: 2;
+      }
+      .hero-name {
+        font-size: clamp(1.8rem, 9.5vw, 2.8rem);
+        letter-spacing: 0.02em;
+      }
+      .hero-sub { font-size: 0.65rem; letter-spacing: 0.12em; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .bands-grid { grid-template-columns: 1fr; }
+      .band-card-img { height: 200px; }
+      .band-card-body { padding: 1.5rem; }
+      .band-card-body--top { padding-bottom: 1rem; }
+      .band-name { font-size: 1.3rem; }
+      .gear-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .live-row { grid-template-columns: 90px 1fr 28px; gap: 1rem; }
+      .live-venue, .live-tag { display: none; }
+      .live-detail-inner { grid-template-columns: 1fr; gap: 1rem; }
+      .live-detail-blocks { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .live-detail-flyer { width: 80px; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+      .hero-scroll { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a class="nav-logo" href="#">Creekers Lab</a>
+    <ul class="nav-links">
+      <li><a href="#live">Live</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#bands">Bands</a></li>
+      <li><a href="#gear">Gear</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-strings">
+      <div class="string"></div>
+      <div class="string"></div>
+      <div class="string"></div>
+      <div class="string"></div>
+    </div>
+    <div class="hero-line"></div>
+    <div class="hero-content">
+      <h1 class="hero-name">
+        Ryo<br>
+        <span>Kobayashi</span>
+      </h1>
+      <p class="hero-sub">Bassist &amp; Session Musician — Tokyo, Japan</p>
+    </div>
+  </section>
+
+  <!-- LIVE INFO -->
+  <section id="live">
+    <div class="section-inner">
+      <p class="section-label fade-up">Live Schedule</p>
+      <div class="fade-up" style="transition-delay:0.1s">
+
+        <!-- 2: Soul Capricorn's @ Chicken Shack Fussa -->
+        <div class="live-item">
+          <div class="live-row" onclick="toggleLive(this)">
+            <div class="live-date">2026.06.20</div>
+            <div class="live-band">Soul Capricorn's</div>
+            <div class="live-venue">東京 / Chicken Shack Fussa</div>
+            <div class="live-tag">Live</div>
+            <div class="live-arrow">+</div>
+          </div>
+          <div class="live-detail">
+            <div class="live-detail-inner">
+              <div class="live-detail-blocks">
+                <div class="live-detail-block">
+                  <div class="live-detail-label">会場</div>
+                  <div class="live-detail-value">Chicken Shack Fussa<br>〒197-0011<br>東京都福生市福生876</div>
+                </div>
+                <div class="live-detail-block">
+                  <div class="live-detail-label">時間</div>
+                  <div class="live-detail-value">Open 17:30<br>Start 18:30</div>
+                </div>
+                <div class="live-detail-block">
+                  <div class="live-detail-label">チケット</div>
+                  <div class="live-detail-value">¥2,500</div>
+                </div>
+                <div class="live-detail-block">
+                  <div class="live-detail-label">出演</div>
+                  <div class="live-detail-value">Edo<br>Shorty&amp;BrotherStone<br>Soul Capricorn's<br>Garage Crap</div>
+                </div>
+              </div>
+              <div class="live-detail-flyer">
+                <img src="./flyer-0620.jpg" alt="Little bit FUNK Little bit ROCK フライヤー" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3: Soul Capricorn's @ 国立REBORN -->
+        <div class="live-item">
+          <div class="live-row" onclick="toggleLive(this)">
+            <div class="live-date">2026.07.12</div>
+            <div class="live-band">Soul Capricorn's</div>
+            <div class="live-venue">東京 / 国立REBORN</div>
+            <div class="live-tag">Live</div>
+            <div class="live-arrow">+</div>
+          </div>
+          <div class="live-detail">
+            <div class="live-detail-inner">
+              <div class="live-detail-blocks">
+                <div class="live-detail-block">
+                  <div class="live-detail-label">会場</div>
+                  <div class="live-detail-value">国立REBORN<br>（東京都国立市）</div>
+                </div>
+                <div class="live-detail-block">
+                  <div class="live-detail-label">時間</div>
+                  <div class="live-detail-value">Open 18:00<br>Start 18:30</div>
+                </div>
+                <div class="live-detail-block">
+                  <div class="live-detail-label">チケット</div>
+                  <div class="live-detail-value">¥2,000 + 1drink</div>
+                </div>
+                <div class="live-detail-block">
+                  <div class="live-detail-label">出演</div>
+                  <div class="live-detail-value">Soul Capricorn's<br>YAROWJIN with RICA<br>有明（ありあけ）</div>
+                </div>
+              </div>
+              <div class="live-detail-flyer">
+                <img src="./flyer-0712.jpg" alt="Reborn Rock フライヤー" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4: フルネルソンズ -->
+        <div class="live-item">
+          <div class="live-row" onclick="toggleLive(this)">
+            <div class="live-date">2025.08.07</div>
+            <div class="live-band">フルネルソンズ</div>
+            <div class="live-venue">埼玉 / 所沢神明社</div>
+            <div class="live-tag">Live</div>
+            <div class="live-arrow">+</div>
+          </div>
+          <div class="live-detail">
+            <div class="live-detail-inner">
+              <div class="live-detail-blocks">
+                <div class="live-detail-block">
+                  <div class="live-detail-label">会場</div>
+                  <div class="live-detail-value">所沢神明社<br>（埼玉県所沢市）</div>
+                </div>
+                <div class="live-detail-block">
+                  <div class="live-detail-label">時間</div>
+                  <div class="live-detail-value">未定</div>
+                </div>
+                <div class="live-detail-block">
+                  <div class="live-detail-label">チケット</div>
+                  <div class="live-detail-value">未定</div>
+                </div>
+                <div class="live-detail-block">
+                  <div class="live-detail-label">出演</div>
+                  <div class="live-detail-value">フルネルソンズ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5: 10/25 秋ヶ瀬公園 -->
+        <div class="live-item">
+          <div class="live-row" onclick="toggleLive(this)">
+            <div class="live-date">2025.10.25</div>
+            <div class="live-band">フルネルソンズ</div>
+            <div class="live-venue">埼玉 / 秋ヶ瀬公園</div>
+            <div class="live-tag">Live</div>
+            <div class="live-arrow">+</div>
+          </div>
+          <div class="live-detail">
+            <div class="live-detail-inner">
+              <div class="live-detail-blocks">
+                <div class="live-detail-block">
+                  <div class="live-detail-label">会場</div>
+                  <div class="live-detail-value">秋ヶ瀬公園<br>（埼玉県さいたま市）</div>
+                </div>
+                <div class="live-detail-block">
+                  <div class="live-detail-label">時間</div>
+                  <div class="live-detail-value">未定</div>
+                </div>
+                <div class="live-detail-block">
+                  <div class="live-detail-label">チケット</div>
+                  <div class="live-detail-value">未定</div>
+                </div>
+                <div class="live-detail-block">
+                  <div class="live-detail-label">出演</div>
+                  <div class="live-detail-value">フルネルソンズ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <p class="section-label fade-up">About</p>
+      <div class="about-grid">
+        <div class="about-body fade-up">
+          <p>
+            東京を拠点に活動するベーシストです。
+            ソウル、ロック、ジャズなど幅広いジャンルをまたいだ演奏スタイルで、
+            ライブシーンを中心に活躍しています。
+          </p>
+          <p>
+            スタジオ録音、ライブサポート、セッションワークに対応しており、
+            バンドのグルーヴを底から支える確かなプレイが持ち味です。
+          </p>
+          <p>
+            サポートレコーディングのご依頼や、ライブサポートのご相談は
+            お気軽にコンタクトフォームからお問い合わせください。
+          </p>
+        </div>
+        <div class="fade-up" style="transition-delay:0.15s">
+          <img src="./hero.png" alt="Ryo Kobayashi" class="about-img">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANDS -->
+  <section id="bands">
+    <div class="section-inner">
+      <p class="section-label fade-up">Bands</p>
+      <div class="bands-grid">
+
+        <!-- 01: Soul Capricorn's -->
+        <div class="band-card fade-up">
+          <div class="band-card-body band-card-body--top">
+            <div class="band-num">01</div>
+            <div class="band-name">Soul Capricorn's</div>
+          </div>
+          <img src="band-soulcapricorns.jpg" alt="Soul Capricorn's" class="band-card-img">
+          <div class="band-card-body">
+            <p class="band-desc">ソウル・ファンクを軸にした東京のバンド。濃密なグルーヴとタイトなアンサンブルが持ち味。</p>
+          </div>
+        </div>
+
+        <!-- 02: フルネルソンズ -->
+        <div class="band-card fade-up" style="transition-delay:0.1s">
+          <div class="band-card-body band-card-body--top">
+            <div class="band-num">02</div>
+            <div class="band-name">フルネルソンズ</div>
+          </div>
+          <img src="band-fullnelsons.png" alt="フルネルソンズ" class="band-card-img">
+          <div class="band-card-body">
+            <p class="band-desc">音楽喫茶MOJOを拠点としている<br>ごった煮なグルーヴが印象的なカオティックファンクバンド</p>
+            <div class="band-links">
+              <a href="https://fullnelsons-band.info/" target="_blank" rel="noopener" title="公式サイト">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2s.07-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>
+              </a>
+              <a href="https://www.youtube.com/channel/UC3fai_P8hdsl0CGTm831WQA" target="_blank" rel="noopener" title="YouTube">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+              </a>
+            </div>
+            <p class="band-comment">ベーシスト交代制により不定期の参加になります</p>
+          </div>
+        </div>
+
+        <!-- 03: 極東マニファクチュア -->
+        <div class="band-card fade-up" style="transition-delay:0.15s">
+          <div class="band-card-body band-card-body--top">
+            <div class="band-num">03</div>
+            <div class="band-name">極東マニファクチュア</div>
+          </div>
+          <img src="band-kyokuto.png" alt="極東マニファクチュア" class="band-card-img">
+          <div class="band-card-body">
+            <p class="band-desc">都内で活動中のオルタナティブロックバンド。<br>多様なバックグラウンドを持つメンバーで構成される。</p>
+            <div class="band-links">
+              <a href="https://open.spotify.com/artist/1fA71h0mVDn1TDJzBOE0aR?si=tlXRFBrzSjCph8_zjvL6Jw" target="_blank" rel="noopener" title="Spotify">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+              </a>
+              <a href="https://www.youtube.com/channel/UCPJMhz7KExTiE8qEm01eMFw" target="_blank" rel="noopener" title="YouTube">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+              </a>
+            </div>
+            <p class="band-comment">現在音源鋭意作成中… 2026年にはライブ活動再開予定です</p>
+          </div>
+        </div>
+
+        <!-- 04: 東京木曜楽団 -->
+        <div class="band-card fade-up" style="transition-delay:0.2s">
+          <div class="band-card-body band-card-body--top">
+            <div class="band-num">04</div>
+            <div class="band-name">東京木曜楽団</div>
+          </div>
+          <img src="band-thursday.png" alt="東京木曜楽団" class="band-card-img">
+          <div class="band-card-body">
+            <p class="band-desc">極東マニファクチュアの前身バンド</p>
+            <div class="band-links">
+              <a href="https://open.spotify.com/intl-ja/artist/6k7FjT5xpdPHzUZuTy9Vez" target="_blank" rel="noopener" title="Spotify">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+              </a>
+              <a href="https://www.youtube.com/@tokyothursdayband8942" target="_blank" rel="noopener" title="YouTube">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+              </a>
+            </div>
+            <p class="band-comment">現在活動停止中です（配信の再生は地味に伸びている）</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GEAR -->
+  <section id="gear">
+    <div class="section-inner">
+      <p class="section-label fade-up">Gear</p>
+      <div class="gear-grid">
+        <div class="gear-category fade-up">
+          <div class="gear-cat-title">Bass</div>
+          <div class="gear-item">
+            <span class="gear-item-name">Freedom Blowzer 5st</span>
+          </div>
+          <div class="gear-item">
+            <span class="gear-item-name">F-Bass BN5</span>
+          </div>
+          <div class="gear-item">
+            <span class="gear-item-name">Crews ManiacSound UncleFat Fretress 4st</span>
+          </div>
+        </div>
+        <div class="gear-category fade-up" style="transition-delay:0.1s">
+          <div class="gear-cat-title">DI / Studio</div>
+          <div class="gear-item">
+            <span class="gear-item-name">Aguilar Tone Hammer</span>
+          </div>
+        </div>
+        <div class="gear-category fade-up" style="transition-delay:0.15s">
+          <div class="gear-cat-title">Amp</div>
+          <div class="gear-item">
+            <span class="gear-item-name">Fender Rumble Stage 800W</span>
+          </div>
+        </div>
+        <div class="gear-category fade-up" style="transition-delay:0.2s">
+          <div class="gear-cat-title">Effects</div>
+          <div class="gear-item">
+            <span class="gear-item-name">EWS Stormy Bass Drive</span>
+          </div>
+          <div class="gear-item">
+            <span class="gear-item-name">Aguilar Filter Twin</span>
+          </div>
+          <div class="gear-item">
+            <span class="gear-item-name">Fender Bassman Reverb</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <p class="section-label fade-up">Contact</p>
+      <div class="contact-grid">
+        <div class="fade-up">
+          <p class="contact-note">
+            サポートレコーディング、ライブサポート、セッションワークのご依頼を
+            お受けしています。下記のSNS、または右記フォームよりお問い合わせください。
+          </p>
+          <div class="contact-links">
+            <a class="contact-link" href="https://www.instagram.com/ryokobass/" target="_blank" rel="noopener">
+              <span class="contact-link-icon">IG</span>
+              Instagram
+            </a>
+            <a class="contact-link" href="https://www.facebook.com/ryokob84" target="_blank" rel="noopener">
+              <span class="contact-link-icon">FB</span>
+              Facebook
+            </a>
+          </div>
+        </div>
+        <form class="form fade-up" style="transition-delay:0.15s" action="#" method="post">
+          <div class="form-group">
+            <label for="name">お名前</label>
+            <input type="text" id="name" name="name" placeholder="Yamada Taro" required />
+          </div>
+          <div class="form-group">
+            <label for="email">メールアドレス</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="type">ご依頼の種類</label>
+            <select id="type" name="type" required>
+              <option value="" disabled selected>選択してください</option>
+              <option value="recording">サポートレコーディング</option>
+              <option value="live">ライブサポート</option>
+              <option value="session">セッション</option>
+              <option value="other">その他</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">メッセージ</label>
+            <textarea id="message" name="message" placeholder="ジャンル、スケジュール、ご予算など、詳細をお知らせください。" required></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-copy">&copy; 2025 Ryo Kobayashi. All rights reserved.</span>
+  </footer>
+
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Fade-up observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Live accordion
+    function toggleLive(row) {
+      const item = row.closest('.live-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.live-item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    // Form submit (placeholder)
+    document.querySelector('.form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = document.querySelector('.form-submit');
+      btn.textContent = 'Sent — Thank you';
+      btn.style.color = 'var(--gold)';
+      btn.disabled = true;
+    });
+  </script>
+</body>
+</html>
