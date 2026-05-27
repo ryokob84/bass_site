@@ -89,8 +89,9 @@
     .hero {
       position: relative;
       min-height: 100vh;
-      display: flex;
-      align-items: flex-end;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      align-items: end;
       padding: 0 0 0 3rem;
       overflow: hidden;
     }
@@ -778,6 +779,9 @@
       </h1>
       <p class="hero-sub">Bassist &amp; Session Musician — Tokyo, Japan</p>
     </div>
+    <div class="hero-photo-wrap">
+      <img src="./hero.png" alt="Ryo Kobayashi" />
+    </div>
   </section>
 
   <!-- LIVE INFO -->
@@ -932,12 +936,11 @@
   <section id="about">
     <div class="section-inner">
       <p class="section-label fade-up">About</p>
-      <div class="about-grid">
-        <div class="about-body fade-up">
+      <div class="about-body fade-up">
           <p>
             東京を拠点に活動するベーシストです。
             ソウル、ロック、ジャズなど幅広いジャンルをまたいだ演奏スタイルで、
-            ライブシーンを中心に活躍しています。
+            ライブシーンを中心に活動しています。
           </p>
           <p>
             スタジオ録音、ライブサポート、セッションワークに対応しており、
@@ -948,10 +951,6 @@
             お気軽にコンタクトフォームからお問い合わせください。
           </p>
         </div>
-        <div class="fade-up" style="transition-delay:0.15s">
-          <img src="./hero.png" alt="Ryo Kobayashi" class="about-img">
-        </div>
-      </div>
     </div>
   </section>
 
