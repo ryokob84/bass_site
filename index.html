@@ -85,6 +85,66 @@
     }
     .nav-links a:hover { color: var(--white); }
 
+    /* ── HAMBURGER ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 201;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--white);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── MOBILE MENU ── */
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+    .mobile-menu.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .mobile-menu-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .mobile-menu-links a {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .mobile-menu-links a:hover { color: var(--gold); }
+
     /* ── HERO ── */
     .hero {
       position: relative;
@@ -707,6 +767,7 @@
     @media (max-width: 900px) {
       nav { padding: 1.25rem 1.5rem; }
       .nav-links { display: none; }
+      .hamburger { display: flex; }
       section { padding: 5rem 1.5rem; }
 
       /* Hero: テキスト左下 + 写真を右側に重ねる */
@@ -761,7 +822,23 @@
       <li><a href="#gear">Gear</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" aria-label="メニュー">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <ul class="mobile-menu-links">
+      <li><a href="#live" class="mobile-menu-link">Live</a></li>
+      <li><a href="#about" class="mobile-menu-link">About</a></li>
+      <li><a href="#bands" class="mobile-menu-link">Bands</a></li>
+      <li><a href="#gear" class="mobile-menu-link">Gear</a></li>
+      <li><a href="#contact" class="mobile-menu-link">Contact</a></li>
+    </ul>
+  </div>
 
   <!-- HERO -->
   <section class="hero" id="home">
@@ -1157,6 +1234,20 @@
       });
     }, { threshold: 0.12 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    document.querySelectorAll('.mobile-menu-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
 
     // Live accordion
     function toggleLive(row) {
