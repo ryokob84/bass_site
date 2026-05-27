@@ -435,7 +435,7 @@
       transition: max-height 0.45s ease;
     }
     .live-item.open .live-detail {
-      max-height: 260px;
+      max-height: 480px;
     }
     .live-detail-inner {
       display: grid;
@@ -480,8 +480,49 @@
       display: block;
       border: 1px solid var(--border);
       transition: opacity 0.25s;
+      cursor: zoom-in;
     }
-    .live-detail-flyer img:hover { opacity: 0.85; }
+    .live-detail-flyer img:hover { opacity: 0.8; }
+
+    /* ── LIGHTBOX ── */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+      backdrop-filter: blur(6px);
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border: 1px solid var(--border);
+      box-shadow: 0 0 80px rgba(0, 0, 0, 0.8);
+      border-radius: 2px;
+    }
+    #lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: none;
+      color: var(--gray);
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    #lightbox-close:hover { color: var(--white); border-color: var(--white); }
 
     /* ── BANDS ── */
     #bands { background: var(--bg2); }
@@ -932,7 +973,7 @@
                 </div>
               </div>
               <div class="live-detail-flyer">
-                <img src="./flyer-0620.jpg" alt="Little bit FUNK Little bit ROCK フライヤー" />
+                <img src="./flyer-0620.jpg" alt="Little bit FUNK Little bit ROCK フライヤー" onclick="openFlyer(this)" />
               </div>
             </div>
           </div>
@@ -968,7 +1009,7 @@
                 </div>
               </div>
               <div class="live-detail-flyer">
-                <img src="./flyer-0712.jpg" alt="Reborn Rock フライヤー" />
+                <img src="./flyer-0712.jpg" alt="Reborn Rock フライヤー" onclick="openFlyer(this)" />
               </div>
             </div>
           </div>
@@ -1254,6 +1295,12 @@
     <span class="footer-copy">&copy; 2025 Ryo Kobayashi. All rights reserved.</span>
   </footer>
 
+  <!-- LIGHTBOX -->
+  <div id="lightbox" onclick="closeLightbox()">
+    <button id="lightbox-close" onclick="closeLightbox()" aria-label="閉じる">✕</button>
+    <img id="lightbox-img" src="" alt="" />
+  </div>
+
   <script>
     // Nav scroll
     const nav = document.getElementById('nav');
@@ -1284,6 +1331,22 @@
         hamburger.classList.remove('open');
         mobileMenu.classList.remove('open');
       });
+    });
+
+    // Flyer lightbox
+    function openFlyer(img) {
+      const lb = document.getElementById('lightbox');
+      document.getElementById('lightbox-img').src = img.src;
+      document.getElementById('lightbox-img').alt = img.alt;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
     });
 
     // Live accordion
