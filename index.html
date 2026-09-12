@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ryo Kobayashi | Bassist</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&family=Space+Mono:ital@0;1&family=Barlow+Condensed:wght@500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&family=Space+Mono:ital@0;1&family=Barlow+Condensed:wght@500;600;700&family=Playfair+Display:wght@700&display=swap"
+    rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
       --bg: #080e0d;
@@ -22,7 +31,9 @@
       --border: rgba(82, 199, 175, 0.2);
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       background: var(--bg);
@@ -57,11 +68,13 @@
       padding: 1.5rem 3rem;
       transition: background 0.4s, backdrop-filter 0.4s;
     }
+
     nav.scrolled {
       background: rgba(8, 14, 13, 0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
+
     .nav-logo {
       font-family: 'Space Mono', monospace;
       font-size: 0.75rem;
@@ -70,11 +83,13 @@
       text-decoration: none;
       text-transform: uppercase;
     }
+
     .nav-links {
       display: flex;
       gap: 2.5rem;
       list-style: none;
     }
+
     .nav-links a {
       font-size: 0.7rem;
       letter-spacing: 0.2em;
@@ -83,7 +98,10 @@
       text-decoration: none;
       transition: color 0.25s;
     }
-    .nav-links a:hover { color: var(--white); }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
 
     /* ── HAMBURGER ── */
     .hamburger {
@@ -97,6 +115,7 @@
       padding: 4px;
       z-index: 201;
     }
+
     .hamburger span {
       display: block;
       width: 22px;
@@ -104,9 +123,18 @@
       background: var(--white);
       transition: transform 0.3s ease, opacity 0.3s ease;
     }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
 
     /* ── MOBILE MENU ── */
     .mobile-menu {
@@ -122,10 +150,12 @@
       pointer-events: none;
       transition: opacity 0.35s ease;
     }
+
     .mobile-menu.open {
       opacity: 1;
       pointer-events: all;
     }
+
     .mobile-menu-links {
       display: flex;
       flex-direction: column;
@@ -133,6 +163,7 @@
       gap: 2.5rem;
       list-style: none;
     }
+
     .mobile-menu-links a {
       font-family: 'Space Mono', monospace;
       font-size: 1rem;
@@ -143,7 +174,10 @@
       text-decoration: none;
       transition: color 0.2s;
     }
-    .mobile-menu-links a:hover { color: var(--white); }
+
+    .mobile-menu-links a:hover {
+      color: var(--white);
+    }
 
     /* ── HERO ── */
     .hero {
@@ -155,19 +189,23 @@
       padding: 0 0 0 3rem;
       overflow: hidden;
     }
+
     .hero-content {
       padding-top: 80px;
       position: relative;
       z-index: 2;
     }
+
     .hero-photo-wrap {
       position: relative;
       height: 100vh;
       overflow: hidden;
     }
+
     .hero-photo-wrap::before {
       content: none;
     }
+
     .hero-photo-wrap img {
       width: 100%;
       height: 100%;
@@ -175,6 +213,7 @@
       object-position: center center;
       display: block;
     }
+
     .hero-bg {
       position: absolute;
       inset: 0;
@@ -183,6 +222,7 @@
         radial-gradient(ellipse 40% 60% at 20% 80%, rgba(82, 199, 175, 0.04) 0%, transparent 70%),
         linear-gradient(160deg, #0c1110 0%, #080e0d 100%);
     }
+
     .hero-line {
       position: absolute;
       top: 0;
@@ -192,29 +232,69 @@
       background: linear-gradient(to bottom, transparent, var(--border) 30%, var(--border) 70%, transparent);
       opacity: 0.5;
     }
+
     .hero-strings {
       position: absolute;
       inset: 0;
       overflow: hidden;
       pointer-events: none;
     }
+
     .string {
       position: absolute;
       top: 0;
       bottom: 0;
       width: 1px;
-      background: linear-gradient(to bottom, transparent 0%, rgba(82,199,175,0.08) 20%, rgba(82,199,175,0.12) 50%, rgba(82,199,175,0.08) 80%, transparent 100%);
+      background: linear-gradient(to bottom, transparent 0%, rgba(82, 199, 175, 0.08) 20%, rgba(82, 199, 175, 0.12) 50%, rgba(82, 199, 175, 0.08) 80%, transparent 100%);
       animation: vibrate 3s ease-in-out infinite;
     }
-    .string:nth-child(1) { left: 15%; animation-delay: 0s; animation-duration: 3.2s; }
-    .string:nth-child(2) { left: 28%; animation-delay: 0.4s; animation-duration: 2.9s; }
-    .string:nth-child(3) { left: 42%; animation-delay: 0.8s; animation-duration: 3.5s; }
-    .string:nth-child(4) { left: 58%; animation-delay: 1.2s; animation-duration: 2.7s; }
+
+    .string:nth-child(1) {
+      left: 15%;
+      animation-delay: 0s;
+      animation-duration: 3.2s;
+    }
+
+    .string:nth-child(2) {
+      left: 28%;
+      animation-delay: 0.4s;
+      animation-duration: 2.9s;
+    }
+
+    .string:nth-child(3) {
+      left: 42%;
+      animation-delay: 0.8s;
+      animation-duration: 3.5s;
+    }
+
+    .string:nth-child(4) {
+      left: 58%;
+      animation-delay: 1.2s;
+      animation-duration: 2.7s;
+    }
+
     @keyframes vibrate {
-      0%, 100% { transform: scaleX(1); opacity: 0.5; }
-      25% { transform: scaleX(2.5) translateX(-1px); opacity: 1; }
-      50% { transform: scaleX(1); opacity: 0.5; }
-      75% { transform: scaleX(2) translateX(1px); opacity: 0.8; }
+
+      0%,
+      100% {
+        transform: scaleX(1);
+        opacity: 0.5;
+      }
+
+      25% {
+        transform: scaleX(2.5) translateX(-1px);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scaleX(1);
+        opacity: 0.5;
+      }
+
+      75% {
+        transform: scaleX(2) translateX(1px);
+        opacity: 0.8;
+      }
     }
 
     .hero-eyebrow {
@@ -227,6 +307,7 @@
       position: relative;
       z-index: 1;
     }
+
     .hero-name {
       font-family: 'Syne', sans-serif;
       font-size: clamp(2.6rem, 5.8vw, 5.5rem);
@@ -238,10 +319,12 @@
       z-index: 1;
       margin: 0;
     }
+
     .hero-name span {
       display: block;
       color: var(--gold);
     }
+
     .hero-sub {
       margin-top: 2rem;
       font-size: 0.8rem;
@@ -251,6 +334,7 @@
       position: relative;
       z-index: 1;
     }
+
     .hero-scroll {
       position: absolute;
       bottom: 3rem;
@@ -266,6 +350,7 @@
       text-transform: uppercase;
       writing-mode: vertical-rl;
     }
+
     .hero-scroll::after {
       content: '';
       width: 1px;
@@ -273,15 +358,36 @@
       background: linear-gradient(to bottom, var(--gold), transparent);
       animation: scroll-line 2s ease-in-out infinite;
     }
+
     @keyframes scroll-line {
-      0% { opacity: 0; transform: scaleY(0); transform-origin: top; }
-      50% { opacity: 1; transform: scaleY(1); transform-origin: top; }
-      100% { opacity: 0; transform: scaleY(1); transform-origin: bottom; }
+      0% {
+        opacity: 0;
+        transform: scaleY(0);
+        transform-origin: top;
+      }
+
+      50% {
+        opacity: 1;
+        transform: scaleY(1);
+        transform-origin: top;
+      }
+
+      100% {
+        opacity: 0;
+        transform: scaleY(1);
+        transform-origin: bottom;
+      }
     }
 
     /* ── SECTIONS ── */
-    section { padding: 8rem 3rem; }
-    .section-inner { max-width: 1100px; margin: 0 auto; }
+    section {
+      padding: 8rem 3rem;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
 
     .section-label {
       font-family: 'Space Mono', monospace;
@@ -294,6 +400,7 @@
       align-items: center;
       gap: 1.5rem;
     }
+
     .section-label::after {
       content: '';
       flex: 1;
@@ -303,19 +410,24 @@
     }
 
     /* ── ABOUT ── */
-    #about { background: var(--bg2); }
+    #about {
+      background: var(--bg2);
+    }
+
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 340px;
       gap: 5rem;
       align-items: center;
     }
+
     .about-img {
       width: 100%;
       height: auto;
       display: block;
       object-fit: contain;
     }
+
     .about-heading {
       font-family: 'Syne', sans-serif;
       font-size: clamp(2.2rem, 4vw, 3.5rem);
@@ -323,16 +435,22 @@
       line-height: 1.05;
       letter-spacing: -0.02em;
     }
+
     .about-heading em {
       font-style: normal;
       color: var(--gold);
     }
+
     .about-body {
       color: #9dbfba;
       font-size: 0.9rem;
       line-height: 1.9;
     }
-    .about-body p + p { margin-top: 1.2rem; }
+
+    .about-body p+p {
+      margin-top: 1.2rem;
+    }
+
     .about-stats {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -341,6 +459,7 @@
       padding-top: 3rem;
       border-top: 1px solid var(--border);
     }
+
     .stat-num {
       font-family: 'Syne', sans-serif;
       font-size: 3rem;
@@ -348,6 +467,7 @@
       color: var(--gold);
       line-height: 1;
     }
+
     .stat-label {
       font-size: 0.65rem;
       letter-spacing: 0.2em;
@@ -357,7 +477,11 @@
     }
 
     /* ── LIVE ── */
-    #live { background: var(--bg); padding-top: 4rem; }
+    #live {
+      background: var(--bg);
+      padding-top: 4rem;
+    }
+
     #live .section-label {
       position: sticky;
       top: 70px;
@@ -366,9 +490,15 @@
       padding-bottom: 1.5rem;
       margin-bottom: 2.5rem;
     }
+
     /* ── LIVE ACCORDION ── */
-    .live-item { border-bottom: 1px solid var(--border); }
-    .live-item:first-child { border-top: 1px solid var(--border); }
+    .live-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .live-item:first-child {
+      border-top: 1px solid var(--border);
+    }
 
     .live-row {
       display: grid;
@@ -380,7 +510,10 @@
       cursor: pointer;
       user-select: none;
     }
-    .live-row:hover { background: rgba(82, 199, 175, 0.04); }
+
+    .live-row:hover {
+      background: rgba(82, 199, 175, 0.04);
+    }
 
     .live-date {
       font-family: 'Space Mono', monospace;
@@ -388,16 +521,19 @@
       color: var(--gold);
       letter-spacing: 0.05em;
     }
+
     .live-band {
       font-family: 'Syne', sans-serif;
       font-size: 1.2rem;
       font-weight: 700;
     }
+
     .live-venue {
       font-size: 0.8rem;
       color: var(--gray);
       letter-spacing: 0.05em;
     }
+
     .live-tag {
       display: inline-block;
       font-family: 'Space Mono', monospace;
@@ -409,6 +545,7 @@
       color: var(--gold);
       justify-self: end;
     }
+
     .live-arrow {
       justify-self: end;
       width: 24px;
@@ -423,6 +560,7 @@
       transition: transform 0.35s ease, border-color 0.25s;
       flex-shrink: 0;
     }
+
     .live-item.open .live-arrow {
       transform: rotate(45deg);
       border-color: var(--gold);
@@ -434,23 +572,27 @@
       overflow: hidden;
       transition: max-height 0.45s ease;
     }
+
     .live-item.open .live-detail {
       max-height: 480px;
     }
+
     .live-detail-inner {
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 2.5rem;
       padding-top: 1.5rem;
       padding-bottom: 2rem;
-      border-top: 1px solid rgba(82,199,175,0.08);
+      border-top: 1px solid rgba(82, 199, 175, 0.08);
       align-items: start;
     }
+
     .live-detail-blocks {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1.5rem;
     }
+
     .live-detail-label {
       font-family: 'Space Mono', monospace;
       font-size: 0.55rem;
@@ -459,21 +601,28 @@
       color: var(--gold-dim);
       margin-bottom: 0.5rem;
     }
+
     .live-detail-value {
       font-size: 0.82rem;
       color: var(--white);
       line-height: 1.7;
     }
+
     .live-detail-value a {
       color: var(--gold);
       text-decoration: none;
       border-bottom: 1px solid var(--border);
     }
-    .live-detail-value a:hover { border-bottom-color: var(--gold); }
+
+    .live-detail-value a:hover {
+      border-bottom-color: var(--gold);
+    }
+
     .live-detail-flyer {
       width: 110px;
       flex-shrink: 0;
     }
+
     .live-detail-flyer img {
       width: 100%;
       height: auto;
@@ -482,7 +631,10 @@
       transition: opacity 0.25s;
       cursor: zoom-in;
     }
-    .live-detail-flyer img:hover { opacity: 0.8; }
+
+    .live-detail-flyer img:hover {
+      opacity: 0.8;
+    }
 
     /* ── LIGHTBOX ── */
     #lightbox {
@@ -496,7 +648,11 @@
       cursor: zoom-out;
       backdrop-filter: blur(6px);
     }
-    #lightbox.open { display: flex; }
+
+    #lightbox.open {
+      display: flex;
+    }
+
     #lightbox img {
       max-width: 90vw;
       max-height: 90vh;
@@ -505,6 +661,7 @@
       box-shadow: 0 0 80px rgba(0, 0, 0, 0.8);
       border-radius: 2px;
     }
+
     #lightbox-close {
       position: absolute;
       top: 1.5rem;
@@ -522,32 +679,50 @@
       justify-content: center;
       transition: color 0.2s, border-color 0.2s;
     }
-    #lightbox-close:hover { color: var(--white); border-color: var(--white); }
+
+    #lightbox-close:hover {
+      color: var(--white);
+      border-color: var(--white);
+    }
 
     /* ── BANDS ── */
-    #bands { background: var(--bg2); }
+    #bands {
+      background: var(--bg2);
+    }
+
     .bands-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 2px;
     }
+
     .band-card {
       position: relative;
       background: var(--bg3);
       overflow: hidden;
       transition: background 0.3s;
     }
+
     .band-card::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--gold), transparent);
       opacity: 0;
       transition: opacity 0.3s;
     }
-    .band-card:hover { background: #131d1c; }
-    .band-card:hover::before { opacity: 1; }
+
+    .band-card:hover {
+      background: #131d1c;
+    }
+
+    .band-card:hover::before {
+      opacity: 1;
+    }
+
     .band-card-img {
       width: 100%;
       height: 240px;
@@ -556,12 +731,15 @@
       display: block;
       background: #0c1716;
     }
+
     .band-card-body {
       padding: 2rem 2.5rem;
     }
+
     .band-card-body--top {
       padding-bottom: 1.5rem;
     }
+
     .band-num {
       font-family: 'Space Mono', monospace;
       font-size: 0.6rem;
@@ -569,24 +747,28 @@
       letter-spacing: 0.2em;
       margin-bottom: 1.2rem;
     }
+
     .band-name {
       font-family: 'Syne', sans-serif;
       font-size: 1.2rem;
       font-weight: 700;
       margin-bottom: 1rem;
     }
+
     .band-desc {
       font-size: 0.8rem;
       color: var(--gray);
       line-height: 1.8;
       margin-bottom: 1.2rem;
     }
+
     .band-links {
       display: flex;
       gap: 0.8rem;
       flex-wrap: wrap;
       margin-bottom: 1rem;
     }
+
     .band-links a {
       display: flex;
       align-items: center;
@@ -599,12 +781,19 @@
       border-radius: 50%;
       transition: color 0.2s, border-color 0.2s, background 0.2s;
     }
-    .band-links a svg { width: 18px; height: 18px; fill: currentColor; }
+
+    .band-links a svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
     .band-links a:hover {
       color: var(--gold);
       border-color: var(--gold);
-      background: rgba(82,199,175,0.07);
+      background: rgba(82, 199, 175, 0.07);
     }
+
     .band-comment {
       font-size: 0.75rem;
       color: var(--gray);
@@ -614,7 +803,12 @@
     }
 
     /* ── GEAR ── */
-    #gear { background: var(--bg); position: relative; overflow: hidden; }
+    #gear {
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+
     #gear::before {
       content: 'GEAR';
       position: absolute;
@@ -629,6 +823,7 @@
       white-space: nowrap;
       letter-spacing: 0.1em;
     }
+
     .gear-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -636,10 +831,12 @@
       position: relative;
       z-index: 1;
     }
+
     .gear-category {
       padding-bottom: 2rem;
       border-bottom: 1px solid var(--border);
     }
+
     .gear-cat-title {
       font-family: 'Space Mono', monospace;
       font-size: 0.6rem;
@@ -648,44 +845,63 @@
       text-transform: uppercase;
       margin-bottom: 1.5rem;
     }
+
     .gear-item {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
       padding: 0.7rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
       font-size: 0.85rem;
     }
-    .gear-item-name { color: var(--white); }
-    .gear-item-detail { color: var(--gray); font-size: 0.75rem; }
+
+    .gear-item-name {
+      color: var(--white);
+    }
+
+    .gear-item-detail {
+      color: var(--gray);
+      font-size: 0.75rem;
+    }
 
     /* ── CONTACT ── */
-    #contact { background: var(--bg2); }
+    #contact {
+      background: var(--bg2);
+    }
+
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1.2fr;
       gap: 6rem;
       align-items: start;
     }
+
     .contact-intro {
       font-family: 'Syne', sans-serif;
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 800;
       line-height: 1.1;
     }
-    .contact-intro em { font-style: normal; color: var(--gold); }
+
+    .contact-intro em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
     .contact-note {
       margin-top: 2rem;
       font-size: 0.82rem;
       color: var(--gray);
       line-height: 1.8;
     }
+
     .contact-links {
       margin-top: 2.5rem;
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
     }
+
     .contact-link {
       display: flex;
       align-items: center;
@@ -695,7 +911,11 @@
       text-decoration: none;
       transition: color 0.25s;
     }
-    .contact-link:hover { color: var(--gold); }
+
+    .contact-link:hover {
+      color: var(--gold);
+    }
+
     .contact-link-icon {
       width: 36px;
       height: 36px;
@@ -707,8 +927,17 @@
       flex-shrink: 0;
       transition: border-color 0.25s, color 0.25s;
     }
-    .contact-link-icon svg { width: 16px; height: 16px; fill: currentColor; }
-    .contact-link:hover .contact-link-icon { border-color: var(--gold); color: var(--gold); }
+
+    .contact-link-icon svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    .contact-link:hover .contact-link-icon {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
 
     /* ── FORM ── */
     .fs-success {
@@ -722,6 +951,7 @@
       border-bottom: 1px solid var(--border);
       margin-bottom: 1rem;
     }
+
     .fs-error {
       display: none;
       color: #e57373;
@@ -729,6 +959,7 @@
       padding: 0.6rem 0;
       margin-bottom: 0.5rem;
     }
+
     .fs-field-error {
       display: block;
       color: #e57373;
@@ -736,9 +967,21 @@
       margin-top: 0.3rem;
       min-height: 1rem;
     }
-    .form { display: flex; flex-direction: column; gap: 0; }
-    .form-group { position: relative; }
-    .form-group + .form-group { margin-top: 0.2rem; }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .form-group {
+      position: relative;
+    }
+
+    .form-group+.form-group {
+      margin-top: 0.2rem;
+    }
+
     .form-group label {
       display: block;
       font-family: 'Space Mono', monospace;
@@ -749,6 +992,7 @@
       margin-bottom: 0.5rem;
       margin-top: 1.5rem;
     }
+
     .form-group input,
     .form-group select,
     .form-group textarea {
@@ -765,20 +1009,28 @@
       transition: border-color 0.25s;
       appearance: none;
     }
+
     .form-group select {
       cursor: pointer;
       background: transparent;
     }
+
     .form-group select option {
       background: #0d1514;
       color: var(--white);
     }
+
     .form-group input:focus,
     .form-group select:focus,
     .form-group textarea:focus {
       border-bottom-color: var(--gold);
     }
-    .form-group textarea { resize: none; min-height: 100px; }
+
+    .form-group textarea {
+      resize: none;
+      min-height: 100px;
+    }
+
     .form-submit {
       margin-top: 2.5rem;
       position: relative;
@@ -796,6 +1048,7 @@
       padding: 0;
       transition: color 0.25s;
     }
+
     .form-submit::before {
       content: '';
       width: 40px;
@@ -803,8 +1056,14 @@
       background: var(--gold);
       transition: width 0.3s;
     }
-    .form-submit:hover { color: var(--gold); }
-    .form-submit:hover::before { width: 60px; }
+
+    .form-submit:hover {
+      color: var(--gold);
+    }
+
+    .form-submit:hover::before {
+      width: 60px;
+    }
 
     /* ── FOOTER ── */
     footer {
@@ -815,12 +1074,14 @@
       justify-content: space-between;
       align-items: center;
     }
+
     .footer-logo {
       font-family: 'Space Mono', monospace;
       font-size: 0.65rem;
       letter-spacing: 0.25em;
       color: var(--gold);
     }
+
     .footer-copy {
       font-size: 0.7rem;
       color: var(--gray-dim);
@@ -833,6 +1094,7 @@
       transform: translateY(24px);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
+
     .fade-up.visible {
       opacity: 1;
       transform: translateY(0);
@@ -840,10 +1102,21 @@
 
     /* ── MOBILE ── */
     @media (max-width: 900px) {
-      nav { padding: 1.25rem 1.5rem; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      section { padding: 5rem 1.5rem; }
+      nav {
+        padding: 1.25rem 1.5rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      section {
+        padding: 5rem 1.5rem;
+      }
 
       /* Hero: テキスト左下 + 写真を右側に重ねる */
       .hero {
@@ -856,35 +1129,94 @@
         overflow: hidden;
         position: relative;
       }
+
       .hero-content {
         padding-bottom: 0;
         position: relative;
         z-index: 2;
       }
+
       .hero-name {
         font-size: clamp(1.8rem, 9.5vw, 2.8rem);
         letter-spacing: 0.02em;
       }
-      .hero-sub { font-size: 0.65rem; letter-spacing: 0.12em; }
 
-      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .bands-grid { grid-template-columns: 1fr; }
-      .band-card-img { height: 200px; }
-      .band-card-body { padding: 1.5rem; }
-      .band-card-body--top { padding-bottom: 1rem; }
-      .band-name { font-size: 1.3rem; }
-      .gear-grid { grid-template-columns: 1fr; }
-      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .live-row { grid-template-columns: 90px 1fr 28px; gap: 1rem; }
-      .live-venue, .live-tag { display: none; }
-      .live-detail-inner { grid-template-columns: 1fr; gap: 1rem; }
-      .live-detail-blocks { grid-template-columns: 1fr 1fr; gap: 1rem; }
-      .live-detail-flyer { width: 80px; }
-      footer { flex-direction: column; gap: 1rem; text-align: center; }
-      .hero-scroll { display: none; }
+      .hero-sub {
+        font-size: 0.65rem;
+        letter-spacing: 0.12em;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .bands-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .band-card-img {
+        height: 200px;
+      }
+
+      .band-card-body {
+        padding: 1.5rem;
+      }
+
+      .band-card-body--top {
+        padding-bottom: 1rem;
+      }
+
+      .band-name {
+        font-size: 1.3rem;
+      }
+
+      .gear-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .live-row {
+        grid-template-columns: 90px 1fr 28px;
+        gap: 1rem;
+      }
+
+      .live-venue,
+      .live-tag {
+        display: none;
+      }
+
+      .live-detail-inner {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .live-detail-blocks {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .live-detail-flyer {
+        width: 80px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+
+      .hero-scroll {
+        display: none;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- NAV -->
@@ -941,194 +1273,211 @@
   <section id="live">
     <div class="section-inner">
       <p class="section-label">Live Schedule</p>
-        <!-- 9/25: フルネルソンズ @ 馴れ合いデスマッチ -->
-        <div class="live-item fade-up">
-          <div class="live-row" onclick="toggleLive(this)">
-            <div class="live-date">2026.09.25</div>
-            <div class="live-band">フルネルソンズ</div>
-            <div class="live-venue">埼玉 / 所沢音楽喫茶MOJO</div>
-            <div class="live-tag">Live</div>
-            <div class="live-arrow">+</div>
+      <!-- 9/25: フルネルソンズ @ 馴れ合いデスマッチ -->
+      <div class="live-item fade-up">
+        <div class="live-row" onclick="toggleLive(this)">
+          <div class="live-date">2026.09.25</div>
+          <div class="live-band">フルネルソンズ</div>
+          <div class="live-venue">埼玉 / 所沢音楽喫茶MOJO</div>
+          <div class="live-tag">Live</div>
+          <div class="live-arrow">+</div>
+        </div>
+        <div class="live-detail">
+          <div class="live-detail-inner">
+            <div class="live-detail-blocks">
+              <div class="live-detail-block">
+                <div class="live-detail-label">イベント</div>
+                <div class="live-detail-value">馴れ合いデスマッチ</div>
+              </div>
+              <div class="live-detail-block">
+                <div class="live-detail-label">会場</div>
+                <div class="live-detail-value">所沢音楽喫茶MOJO<br>埼玉県所沢市南住吉1-13<br>サザンビレッジ2F</div>
+              </div>
+              <div class="live-detail-block">
+                <div class="live-detail-label">時間</div>
+                <div class="live-detail-value">Open/Start 18:00</div>
+              </div>
+              <div class="live-detail-block">
+                <div class="live-detail-label">チケット</div>
+                <div class="live-detail-value">500円(お通し代)</div>
+              </div>
+            </div>
+            <div class="live-detail-flyer">
+              <img src="./flyer-0925.jpg" alt="馴れ合いデスマッチ フライヤー" onclick="openFlyer(this)" />
+            </div>
           </div>
-          <div class="live-detail">
-            <div class="live-detail-inner">
-              <div class="live-detail-blocks">
-                <div class="live-detail-block">
-                  <div class="live-detail-label">イベント</div>
-                  <div class="live-detail-value">馴れ合いデスマッチ</div>
+        </div>
+      </div>
+
+      <!-- 10/3: やまそら祭2026 -->
+      <div class="live-item fade-up">
+        <div class="live-row" onclick="toggleLive(this)">
+          <div class="live-date">2026.10.03</div>
+          <div class="live-band">MAKE some DOORS / フルネルソンズ / yam with backbone</div>
+          <div class="live-venue">埼玉 / 狭山稲荷山公園</div>
+          <div class="live-tag">Festival</div>
+          <div class="live-arrow">+</div>
+        </div>
+        <div class="live-detail">
+          <div class="live-detail-inner">
+            <div class="live-detail-blocks">
+              <div class="live-detail-block">
+                <div class="live-detail-label">イベント</div>
+                <div class="live-detail-value">やまそら祭2026<BR>
+                  <a href="https://sayama-portal.jp/event/00000474715/">https://sayama-portal.jp/</a>
                 </div>
-                <div class="live-detail-block">
-                  <div class="live-detail-label">会場</div>
-                  <div class="live-detail-value">所沢音楽喫茶MOJO<br>埼玉県所沢市南住吉1-13<br>サザンビレッジ2F</div>
-                </div>
-                <div class="live-detail-block">
-                  <div class="live-detail-label">時間</div>
-                  <div class="live-detail-value">詳細未定</div>
-                </div>
-                <div class="live-detail-block">
-                  <div class="live-detail-label">チケット</div>
-                  <div class="live-detail-value">詳細未定</div>
-                </div>
+              </div>
+              <div class="live-detail-block">
+                <div class="live-detail-label">会場</div>
+                <div class="live-detail-value">埼玉県営 狭山稲荷山公園<br>（西武池袋線 稲荷山公園駅 徒歩1分）</div>
+              </div>
+              <div class="live-detail-block">
+                <div class="live-detail-label">時間</div>
+                <div class="live-detail-value">10:00〜19:00<br><br>MAKE some DOORS<br>SOLA Stage 13:20〜13:55<br><br>yam
+                  with backbone<br>SOLA Stage 16:05〜16:45<br><br>フルネルソンズ<br>YAMA Stage 18:20〜19:00</div>
+              </div>
+              <div class="live-detail-block">
+                <div class="live-detail-label">チケット</div>
+                <div class="live-detail-value">入場無料</div>
+              </div>
+            </div>
+            <div class="live-detail-flyer">
+              <img src="./flyer-1003.jpg" alt="やまそら祭2026 フライヤー" onclick="openFlyer(this)" />
+              <div class="live-detail-flyer">
+              </div>
+              <img src="./detail-1003.jpg" alt="やまそら祭2026 フライヤー" onclick="openFlyer(this)" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10/12: Soul Capricorn's / MAKE some DOORS @ 焼酎場ぁ～くんちゃん -->
+      <div class="live-item fade-up">
+        <div class="live-row" onclick="toggleLive(this)">
+          <div class="live-date">2026.10.12</div>
+          <div class="live-band">Soul Capricorn's / MAKE some DOORS</div>
+          <div class="live-venue">東京 / 焼酎場ぁ～くんちゃん</div>
+          <div class="live-tag">Live</div>
+          <div class="live-arrow">+</div>
+        </div>
+        <div class="live-detail">
+          <div class="live-detail-inner">
+            <div class="live-detail-blocks">
+              <div class="live-detail-block">
+                <div class="live-detail-label">会場</div>
+                <div class="live-detail-value">焼酎場ぁ～くんちゃん<br>（東京都中野区）</div>
+              </div>
+              <div class="live-detail-block">
+                <div class="live-detail-label">時間</div>
+                <div class="live-detail-value">詳細未定</div>
+              </div>
+              <div class="live-detail-block">
+                <div class="live-detail-label">チケット</div>
+                <div class="live-detail-value">詳細未定</div>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- 10/3: やまそら祭2026 -->
-        <div class="live-item fade-up">
-          <div class="live-row" onclick="toggleLive(this)">
-            <div class="live-date">2026.10.03</div>
-            <div class="live-band">MAKE some DOORS / フルネルソンズ / yam with backbone</div>
-            <div class="live-venue">埼玉 / 狭山稲荷山公園</div>
-            <div class="live-tag">Festival</div>
-            <div class="live-arrow">+</div>
-          </div>
-          <div class="live-detail">
-            <div class="live-detail-inner">
-              <div class="live-detail-blocks">
-                <div class="live-detail-block">
-                  <div class="live-detail-label">イベント</div>
-                  <div class="live-detail-value">やまそら祭2026</div>
+      <!-- 10/25: フルネルソンズ @ 秋ヶ瀬フェス -->
+      <div class="live-item fade-up">
+        <div class="live-row" onclick="toggleLive(this)">
+          <div class="live-date">2026.10.25</div>
+          <div class="live-band">フルネルソンズ</div>
+          <div class="live-venue">埼玉 / 秋ヶ瀬公園</div>
+          <div class="live-tag">Festival</div>
+          <div class="live-arrow">+</div>
+        </div>
+        <div class="live-detail">
+          <div class="live-detail-inner">
+            <div class="live-detail-blocks">
+              <div class="live-detail-block">
+                <div class="live-detail-label">イベント</div>
+                <div class="live-detail-value">秋ヶ瀬フェス<BR>
+                  <a href="https://akigasefes.com/">https://akigasefes.com/</a>
                 </div>
-                <div class="live-detail-block">
-                  <div class="live-detail-label">会場</div>
-                  <div class="live-detail-value">埼玉県営 狭山稲荷山公園<br>（西武池袋線 稲荷山公園駅 徒歩1分）</div>
-                </div>
-                <div class="live-detail-block">
-                  <div class="live-detail-label">時間</div>
-                  <div class="live-detail-value">10:00〜19:00<br><br>MAKE some DOORS<br>SOLA Stage 13:20〜13:55<br><br>yam with backbone<br>SOLA Stage 16:05〜16:45<br><br>フルネルソンズ<br>YAMA Stage 18:20〜19:00</div>
-                </div>
-                <div class="live-detail-block">
-                  <div class="live-detail-label">チケット</div>
-                  <div class="live-detail-value">入場無料</div>
-                </div>
+              </div>
+              <div class="live-detail-block">
+                <div class="live-detail-label">会場</div>
+                <div class="live-detail-value">秋ヶ瀬公園<br>（埼玉県さいたま市）</div>
+              </div>
+              <div class="live-detail-block">
+                <div class="live-detail-label">時間</div>
+                <div class="live-detail-value">会場10:00<BR>開演10:30<BR></div>
+              </div>
+              <div class="live-detail-block">
+                <div class="live-detail-label">チケット</div>
+                <div class="live-detail-value">前売り2500円<br>当日3000円<br>(高校生以下無料)</div>
               </div>
               <div class="live-detail-flyer">
-                <img src="./flyer-1003.jpg" alt="やまそら祭2026 フライヤー" onclick="openFlyer(this)" />
+                <img src="./flyer-1025.jpg" alt="秋ヶ瀬フェス2026 フライヤー" onclick="openFlyer(this)" />
+              </div>
+              <div class="live-detail-flyer">
+                <img src="./detail-1025.jpg" alt="秋ヶ瀬フェス2026 フライヤー" onclick="openFlyer(this)" />
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- 10/12: Soul Capricorn's / MAKE some DOORS @ 焼酎場ぁ～くんちゃん -->
-        <div class="live-item fade-up">
-          <div class="live-row" onclick="toggleLive(this)">
-            <div class="live-date">2026.10.12</div>
-            <div class="live-band">Soul Capricorn's / MAKE some DOORS</div>
-            <div class="live-venue">東京 / 焼酎場ぁ～くんちゃん</div>
-            <div class="live-tag">Live</div>
-            <div class="live-arrow">+</div>
-          </div>
-          <div class="live-detail">
-            <div class="live-detail-inner">
-              <div class="live-detail-blocks">
-                <div class="live-detail-block">
-                  <div class="live-detail-label">会場</div>
-                  <div class="live-detail-value">焼酎場ぁ～くんちゃん<br>（東京都中野区）</div>
-                </div>
-                <div class="live-detail-block">
-                  <div class="live-detail-label">時間</div>
-                  <div class="live-detail-value">詳細未定</div>
-                </div>
-                <div class="live-detail-block">
-                  <div class="live-detail-label">チケット</div>
-                  <div class="live-detail-value">詳細未定</div>
-                </div>
+      <!-- 10/18: ギクラ @ 荻窪club Doctor -->
+      <div class="live-item fade-up">
+        <div class="live-row" onclick="toggleLive(this)">
+          <div class="live-date">2026.10.18</div>
+          <div class="live-band">ギクラ</div>
+          <div class="live-venue">東京 / 荻窪club Doctor</div>
+          <div class="live-tag">Live</div>
+          <div class="live-arrow">+</div>
+        </div>
+        <div class="live-detail">
+          <div class="live-detail-inner">
+            <div class="live-detail-blocks">
+              <div class="live-detail-block">
+                <div class="live-detail-label">会場</div>
+                <div class="live-detail-value">荻窪club Doctor<br>（東京都杉並区）</div>
+              </div>
+              <div class="live-detail-block">
+                <div class="live-detail-label">時間</div>
+                <div class="live-detail-value">op18:30/st19:00<BR>ギクラ 19:00〜19:30</div>
+              </div>
+              <div class="live-detail-block">
+                <div class="live-detail-label">チケット</div>
+                <div class="live-detail-value">￥2.500(＋d)</div>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- 10/25: フルネルソンズ @ 秋ヶ瀬フェス -->
-        <div class="live-item fade-up">
-          <div class="live-row" onclick="toggleLive(this)">
-            <div class="live-date">2026.10.25</div>
-            <div class="live-band">フルネルソンズ</div>
-            <div class="live-venue">埼玉 / 秋ヶ瀬公園</div>
-            <div class="live-tag">Festival</div>
-            <div class="live-arrow">+</div>
-          </div>
-          <div class="live-detail">
-            <div class="live-detail-inner">
-              <div class="live-detail-blocks">
-                <div class="live-detail-block">
-                  <div class="live-detail-label">イベント</div>
-                  <div class="live-detail-value">秋ヶ瀬フェス</div>
-                </div>
-                <div class="live-detail-block">
-                  <div class="live-detail-label">会場</div>
-                  <div class="live-detail-value">秋ヶ瀬公園<br>（埼玉県さいたま市）</div>
-                </div>
-                <div class="live-detail-block">
-                  <div class="live-detail-label">時間</div>
-                  <div class="live-detail-value">詳細未定</div>
-                </div>
-                <div class="live-detail-block">
-                  <div class="live-detail-label">チケット</div>
-                  <div class="live-detail-value">詳細未定</div>
-                </div>
+      <!-- 12/12: ギクラ @ 立川バベル -->
+      <div class="live-item fade-up">
+        <div class="live-row" onclick="toggleLive(this)">
+          <div class="live-date">2026.12.12</div>
+          <div class="live-band">ギクラ</div>
+          <div class="live-venue">東京 / 立川バベル</div>
+          <div class="live-tag">Live</div>
+          <div class="live-arrow">+</div>
+        </div>
+        <div class="live-detail">
+          <div class="live-detail-inner">
+            <div class="live-detail-blocks">
+              <div class="live-detail-block">
+                <div class="live-detail-label">会場</div>
+                <div class="live-detail-value">立川バベル<br>（東京都立川市）</div>
+              </div>
+              <div class="live-detail-block">
+                <div class="live-detail-label">時間</div>
+                <div class="live-detail-value">詳細未定</div>
+              </div>
+              <div class="live-detail-block">
+                <div class="live-detail-label">チケット</div>
+                <div class="live-detail-value">詳細未定</div>
               </div>
             </div>
           </div>
         </div>
-
-        <!-- 10/18: ギクラ @ 荻窪club Doctor -->
-        <div class="live-item fade-up">
-          <div class="live-row" onclick="toggleLive(this)">
-            <div class="live-date">2026.10.18</div>
-            <div class="live-band">ギクラ</div>
-            <div class="live-venue">東京 / 荻窪club Doctor</div>
-            <div class="live-tag">Live</div>
-            <div class="live-arrow">+</div>
-          </div>
-          <div class="live-detail">
-            <div class="live-detail-inner">
-              <div class="live-detail-blocks">
-                <div class="live-detail-block">
-                  <div class="live-detail-label">会場</div>
-                  <div class="live-detail-value">荻窪club Doctor<br>（東京都杉並区）</div>
-                </div>
-                <div class="live-detail-block">
-                  <div class="live-detail-label">時間</div>
-                  <div class="live-detail-value">詳細未定</div>
-                </div>
-                <div class="live-detail-block">
-                  <div class="live-detail-label">チケット</div>
-                  <div class="live-detail-value">詳細未定</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 12/12: ギクラ @ 立川バベル -->
-        <div class="live-item fade-up">
-          <div class="live-row" onclick="toggleLive(this)">
-            <div class="live-date">2026.12.12</div>
-            <div class="live-band">ギクラ</div>
-            <div class="live-venue">東京 / 立川バベル</div>
-            <div class="live-tag">Live</div>
-            <div class="live-arrow">+</div>
-          </div>
-          <div class="live-detail">
-            <div class="live-detail-inner">
-              <div class="live-detail-blocks">
-                <div class="live-detail-block">
-                  <div class="live-detail-label">会場</div>
-                  <div class="live-detail-value">立川バベル<br>（東京都立川市）</div>
-                </div>
-                <div class="live-detail-block">
-                  <div class="live-detail-label">時間</div>
-                  <div class="live-detail-value">詳細未定</div>
-                </div>
-                <div class="live-detail-block">
-                  <div class="live-detail-label">チケット</div>
-                  <div class="live-detail-value">詳細未定</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      </div>
 
     </div>
   </section>
@@ -1138,20 +1487,20 @@
     <div class="section-inner">
       <p class="section-label fade-up">About</p>
       <div class="about-body fade-up">
-          <p>
-            東京を拠点に活動するベーシストです。
-            ソウル、ロック、ジャズなど幅広いジャンルをまたいだ演奏スタイルで、
-            ライブシーンを中心に活動しています。
-          </p>
-          <p>
-            スタジオ録音、ライブサポート、セッションワークに対応しており、
-            バンドのグルーヴを底から支える確かなプレイが持ち味です。
-          </p>
-          <p>
-            サポートレコーディングのご依頼や、ライブサポートのご相談は
-            お気軽にコンタクトフォームからお問い合わせください。
-          </p>
-        </div>
+        <p>
+          東京を拠点に活動するベーシストです。
+          ソウル、ロック、ジャズなど幅広いジャンルをまたいだ演奏スタイルで、
+          ライブシーンを中心に活動しています。
+        </p>
+        <p>
+          スタジオ録音、ライブサポート、セッションワークに対応しており、
+          バンドのグルーヴを底から支える確かなプレイが持ち味です。
+        </p>
+        <p>
+          サポートレコーディングのご依頼や、ライブサポートのご相談は
+          お気軽にコンタクトフォームからお問い合わせください。
+        </p>
+      </div>
     </div>
   </section>
 
@@ -1165,17 +1514,26 @@
         <div class="band-card fade-up">
           <div class="band-card-body band-card-body--top">
             <div class="band-num">01</div>
-            <div class="band-name">ギクラ<span style="font-size:0.55em;font-weight:300;color:var(--gray);margin-left:8px;">旧: 極東マニファクチュア</span></div>
+            <div class="band-name">ギクラ<span
+                style="font-size:0.55em;font-weight:300;color:var(--gray);margin-left:8px;">旧: 極東マニファクチュア</span></div>
           </div>
           <img src="band-kyokuto.png" alt="ギクラ" class="band-card-img">
           <div class="band-card-body">
             <p class="band-desc">都内で活動中のオルタナティブロックバンド。<br>多様なバックグラウンドを持つメンバーで構成される。</p>
             <div class="band-links">
-              <a href="https://open.spotify.com/artist/1fA71h0mVDn1TDJzBOE0aR?si=tlXRFBrzSjCph8_zjvL6Jw" target="_blank" rel="noopener" title="Spotify">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+              <a href="https://open.spotify.com/artist/1fA71h0mVDn1TDJzBOE0aR?si=tlXRFBrzSjCph8_zjvL6Jw" target="_blank"
+                rel="noopener" title="Spotify">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
+                </svg>
               </a>
-              <a href="https://www.youtube.com/channel/UCPJMhz7KExTiE8qEm01eMFw" target="_blank" rel="noopener" title="YouTube">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+              <a href="https://www.youtube.com/channel/UCPJMhz7KExTiE8qEm01eMFw" target="_blank" rel="noopener"
+                title="YouTube">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z" />
+                </svg>
               </a>
             </div>
             <p class="band-comment">現在音源鋭意作成中… 2026年にはライブ活動再開予定です。</p>
@@ -1193,10 +1551,17 @@
             <p class="band-desc">音楽喫茶MOJOを拠点としている。<br>ごった煮なグルーヴが印象的なカオティックファンクバンド。</p>
             <div class="band-links">
               <a href="https://fullnelsons-band.info/" target="_blank" rel="noopener" title="公式サイト">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2s.07-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2s.07-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z" />
+                </svg>
               </a>
-              <a href="https://www.youtube.com/channel/UC3fai_P8hdsl0CGTm831WQA" target="_blank" rel="noopener" title="YouTube">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+              <a href="https://www.youtube.com/channel/UC3fai_P8hdsl0CGTm831WQA" target="_blank" rel="noopener"
+                title="YouTube">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z" />
+                </svg>
               </a>
             </div>
             <p class="band-comment">ベーシスト交代制により不定期の参加になります。</p>
@@ -1225,11 +1590,18 @@
           <div class="band-card-body">
             <p class="band-desc">ギクラの前身バンド。配信がメインです。</p>
             <div class="band-links">
-              <a href="https://open.spotify.com/intl-ja/artist/6k7FjT5xpdPHzUZuTy9Vez" target="_blank" rel="noopener" title="Spotify">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+              <a href="https://open.spotify.com/intl-ja/artist/6k7FjT5xpdPHzUZuTy9Vez" target="_blank" rel="noopener"
+                title="Spotify">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
+                </svg>
               </a>
               <a href="https://www.youtube.com/@tokyothursdayband8942" target="_blank" rel="noopener" title="YouTube">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z" />
+                </svg>
               </a>
             </div>
             <p class="band-comment">現在活動停止中です。</p>
@@ -1299,15 +1671,23 @@
             お受けしています。下記のSNS、または右記フォームよりお問い合わせください。
           </p>
           <div class="contact-links">
-            <a class="contact-link" href="https://www.instagram.com/ryokobass/" target="_blank" rel="noopener" title="Instagram">
+            <a class="contact-link" href="https://www.instagram.com/ryokobass/" target="_blank" rel="noopener"
+              title="Instagram">
               <span class="contact-link-icon">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                </svg>
               </span>
               Instagram
             </a>
-            <a class="contact-link" href="https://www.facebook.com/ryokob84" target="_blank" rel="noopener" title="Facebook">
+            <a class="contact-link" href="https://www.facebook.com/ryokob84" target="_blank" rel="noopener"
+              title="Facebook">
               <span class="contact-link-icon">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
               </span>
               Facebook
             </a>
@@ -1339,7 +1719,8 @@
           </div>
           <div class="form-group">
             <label for="message">メッセージ</label>
-            <textarea id="message" name="message" placeholder="ジャンル、スケジュール、ご予算など、詳細をお知らせください。" required data-fs-field></textarea>
+            <textarea id="message" name="message" placeholder="ジャンル、スケジュール、ご予算など、詳細をお知らせください。" required
+              data-fs-field></textarea>
             <span data-fs-error="message" class="fs-field-error"></span>
           </div>
           <button type="submit" class="form-submit" data-fs-submit-btn>Send Message</button>
@@ -1421,4 +1802,5 @@
   </script>
   <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
+
 </html>
